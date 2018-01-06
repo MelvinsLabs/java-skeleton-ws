@@ -27,11 +27,6 @@
         <service.name>SkeletonService</service.name>
         <service.short.name>skeleton-ws</service.short.name>
 
-        <!-- Docker Specific Settings -->
-        <docker.registry.namespace>214081317674.dkr.ecr.us-west-2.amazonaws.com</docker.registry.namespace>
-        <docker.image.repo>${service.artifactId}</docker.image.repo>
-        <docker.image.version>${service.version}</docker.image.version>
-
         <!-- 3rd Party Dependencies -->
         <com.lmax.disruptor.version>3.3.7</com.lmax.disruptor.version>
         <org.apache.logging.log4j.version>2.10.0</org.apache.logging.log4j.version>
