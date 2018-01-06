@@ -20,6 +20,9 @@
 
         <!-- Docker Specific Settings -->
         <docker.build.dir>${project.basedir}/docker-build</docker.build.dir>
+        <docker.registry.namespace></docker.registry.namespace>
+        <docker.image.repo>${service.artifactId}</docker.image.repo>
+        <docker.image.version>${service.version}</docker.image.version>
     </properties>
 
     <dependencies>
