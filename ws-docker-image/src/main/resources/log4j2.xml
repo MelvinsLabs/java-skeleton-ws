@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="10">
+
+    <Properties>
+        <Property name="logDir">/opt/logs/tomcat</Property>
+        <Property name="layout">%d{yyyy-MM-dd HH:mm:ss.SSSZ} [%t] %-5p %c %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layout}"/>
+        </Console>
+
+        <RollingRandomAccessFile name="MANAGER"
+                                 fileName="${logDir}/manager.log"
+                                 filePattern="${logDir}/manager.log.%i">
+            <PatternLayout pattern="${layout}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="HOST-MANAGER"
+                                 fileName="${logDir}/host-manager.log"
+                                 filePattern="${logDir}/host-manager.log.%i">
+            <PatternLayout pattern="${layout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="LOCALHOST"
+                                 fileName="${logDir}/localhost.log"
+                                 filePattern="${logDir}/localhost.log.%i">
+            <PatternLayout pattern="${layout}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="CATALINA"
+                                 fileName="${logDir}/catalina.log"
+                                 filePattern="${logDir}/catalina.log.%i">
+            <PatternLayout pattern="${layout}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager]"
+                level="INFO"
+                additivity="false">
+            <AppenderRef ref="MANAGER"/>
+        </Logger>
+        <Logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager]"
+                level="INFO"
+                additivity="false">
+            <AppenderRef ref="HOST-MANAGER"/>
+        </Logger>
+        <Logger name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost]"
+                level="INFO"
+                additivity="false">
+            <AppenderRef ref="LOCALHOST"/>
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="CATALINA"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

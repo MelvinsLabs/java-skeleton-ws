@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.melvins.labs</groupId>
+    <artifactId>skeleton-java-ws-parent</artifactId>
+    <version>0.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>WS Parent</name>
+
+    <developers>
+        <developer>
+            <name>Mels</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- Project Specific Settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- WS Specific Settings -->
+        <service.groupId>${groupId}</service.groupId>
+        <service.artifactId>skeleton-java-ws</service.artifactId>
+        <service.version>${version}</service.version>
+        <service.name>SkeletonService</service.name>
+        <service.short.name>skeleton-ws</service.short.name>
+
+        <!-- Docker Specific Settings -->
+        <docker.registry.namespace>214081317674.dkr.ecr.us-west-2.amazonaws.com</docker.registry.namespace>
+        <docker.image.repo>${service.artifactId}</docker.image.repo>
+        <docker.image.version>${service.version}</docker.image.version>
+
+        <!-- 3rd Party Dependencies -->
+        <com.lmax.disruptor.version>3.3.7</com.lmax.disruptor.version>
+        <org.apache.logging.log4j.version>2.10.0</org.apache.logging.log4j.version>
+
+        <!-- Master Directories -->
+        <log.dir>/opt/logs</log.dir>
+    </properties>
+
+    <modules>
+        <module>ws</module>
+        <module>ws-docker-image</module>
+    </modules>
+
+</project>

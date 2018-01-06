@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Server port="${tc.server.shutdown.port}" shutdown="SHUTDOWN">
+
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
+
+    <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
+
+    <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
+
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+
+    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
+    <GlobalNamingResources>
+    </GlobalNamingResources>
+
+    <Service name="Catalina">
+
+        <Connector port="8080"
+                   protocol="HTTP/1.1"
+                   connectionTimeout="20000"
+                   keepAliveTimeout="60000"
+                   maxKeepAliveRequests="-1" />
+
+        <Engine name="Catalina" defaultHost="localhost">
+
+            <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="false">
+
+                <Valve className="org.apache.catalina.valves.AccessLogValve"
+                       directory="/opt/logs/tomcat"
+                       prefix="localhost_access_log"
+                       suffix=".log"
+                       renameOnRotate="true"
+                       pattern="request_date_time=%{yyyy-MM-dd HH:mm:ss.SSSZ}t remote_host=%h remote_user=%u http_method=%m request_url=%U response_status=%s request_time_taken_millis=%D response_bytes=%b thread_name=%I header_ApplicationId=%{ApplicationId}i header_CorrelationId=%{CorrelationId}i header_NordApiVersion=%{NordApiVersion}i header_OrganizationCode=%{OrganizationCode}i header_TimeZone=%{TimeZone}i header_xForwardedFor=%{X-Forwarded-For}i"/>
+            </Host>
+        </Engine>
+    </Service>
+</Server>
