@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>me.melvins.labs</groupId>
+        <artifactId>skeleton-java-ws-parent</artifactId>
+        <version>0.0.0</version>
+    </parent>
+
+    <artifactId>skeleton-java-ws-beanstalk-bundle</artifactId>
+    <packaging>pom</packaging>
+
+    <name>WS Beanstalk Bundle</name>
+
+    <properties>
+        <!-- Project Specific Settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Docker Specific Settings -->
+        <beanstalk.build.dir>${project.basedir}/beanstalk-bundle</beanstalk.build.dir>
+    </properties>
+
+    <dependencies>
+        <!-- START OF DEPENDENCIES -->
+
+
+        <!-- END OF DEPENDENCIES -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- START of Plugins -->
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <!-- Make AWS ElasticBeanstalk Bundle Assembly -->
+                    <execution>
+                        <id>make-aws-eb-bundle-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/aws-eb-bundle-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <!-- Make AWS ElasticBeanstalk Env Assembly -->
+                    <execution>
+                        <id>make-aws-eb-env-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                        <descriptors>
+                            <descriptor>src/main/assembly/aws-eb-env-assembly.xml</descriptor>
+                        </descriptors>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- END of Plugins -->
+        </plugins>
+    </build>
+
+</project>
