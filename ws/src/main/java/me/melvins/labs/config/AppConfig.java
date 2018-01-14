@@ -7,6 +7,7 @@ package me.melvins.labs.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = "me.melvins.labs")
-@Import(value = SwaggerConfig.class)
+@ImportResource("application.properties")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     /**
